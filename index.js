@@ -1,6 +1,5 @@
 var points = require('./lib/points');
 var drawLine = require('./lib/line');
-var surrender = require('surrender');
 
 exports = module.exports = function (width, height, alist) {
     if (typeof width === 'object') {

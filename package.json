@@ -1,0 +1,33 @@
+{
+    "name" : "undirender",
+    "version" : "0.0.0",
+    "description" : "render undirected graphs in the terminal",
+    "main" : "index.js",
+    "directories" : {
+        "example" : "example"
+    },
+    "dependencies" : {
+        "fort" : "~0.1.0"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/substack/undirender.git"
+    },
+    "homepage" : "https://github.com/substack/undirender",
+    "keywords" : [
+        "graph",
+        "render",
+        "console",
+        "terminal",
+        "line",
+        "point",
+        "edge",
+        "node"
+    ],
+    "author" : {
+        "name" : "James Halliday",
+        "email" : "mail@substack.net",
+        "url" : "http://substack.net"
+    },
+    "license" : "MIT"
+}
