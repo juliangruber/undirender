@@ -1,11 +1,10 @@
-var createGraph = require('../');
+var undirender = require('../');
 
-var g = createGraph([
+var s = undirender([
     [ 'a', 'b' ],
     [ 'b', 'c' ],
     [ 'b', 'd' ],
     [ 'd', 'e' ],
     [ 'd', 'f' ]
 ]);
-
-console.log(g);
+console.log(s);
