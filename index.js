@@ -1,5 +1,6 @@
 var points = require('./lib/points');
-var edges = require('./lib/edges');
+var drawLine = require('./lib/line');
+var surrender = require('surrender');
 
 exports = module.exports = function (width, height, alist) {
     if (typeof width === 'object') {
@@ -8,21 +9,31 @@ exports = module.exports = function (width, height, alist) {
         height = 24;
     }
     var pts = points(alist);
-    var es = edges(alist);
     
     var screen = [];
     for (var i = 0; i < height; i++) {
         screen.push(Array(width + 1).join(' ').split(''));
     }
     
-    var transform = createTransform(pts);
+    var transform = createTransform(width, height, pts);
     
     Object.keys(pts).forEach(function (key) {
         var pt = pts[key];
         var xy = transform(pt);
-        var x = Math.floor(xy[0] * width);
-        var y = Math.floor(xy[1] * height);
-        screen[y][x] = key;
+        screen[xy[1]][xy[0]] = key;
+    });
+    
+    alist.forEach(function (edge) {
+        var a = edge[0], b = edge[1];
+        var ta = transform(pts[a]);
+        var tb = transform(pts[b]);
+        
+        drawLine(ta, tb).forEach(function (c) {
+            var x = c[0], y = c[1];
+            if (screen[y][x] === ' ') {
+                screen[c[1]][c[0]] = c[2];
+            }
+        });
     });
     
     return screen.map(function (row) {
@@ -31,9 +42,8 @@ exports = module.exports = function (width, height, alist) {
 };
 
 exports.points = points;
-exports.edges = edges;
 
-function createTransform (nodes) {
+function createTransform (width, height, nodes) {
     var pts = Object.keys(nodes).map(function (key) {
         return nodes[key];
     });
@@ -54,9 +64,8 @@ function createTransform (nodes) {
     var w = max.x - min.x + 1;
     
     return function (pt) {
-        return [
-            (pt[0] - min.x) / w,
-            (pt[1] - min.y) / h
-        ];
+        var x = (pt[0] - min.x) / w;
+        var y = (pt[1] - min.y) / h
+        return [ Math.floor(x * width), Math.floor(y * height) ];
     };
 } 
