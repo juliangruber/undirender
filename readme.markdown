@@ -55,7 +55,7 @@ var undirender = require('undirender')
 
 ## undirender(width, height, alist)
 
-Given the [https://en.wikipedia.org/wiki/Adjacency_list](adjacency list) `alist`
+Given the [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list) `alist`
 that describes an undirected graph, return a string of `width` rows by `height`
 columns that renders the graph in a fixed-width font.
 
