@@ -47,6 +47,12 @@ g__                     /                 \____|
                                                                                 
 ```
 
+Or use the CLI:
+
+```
+$ undirender a-b a-e b-c b-d c-e d-e d-g g-h h-e
+```
+
 # methods
 
 ```
@@ -61,10 +67,16 @@ columns that renders the graph in a fixed-width font.
 
 # install
 
-With [npm](https://npmjs.org) do:
+For the library, With [npm](https://npmjs.org) do:
 
 ```
 npm install undirender
+```
+
+For the cli, do:
+
+```
+npm install -g undirender
 ```
 
 # license
