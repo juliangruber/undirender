@@ -9,6 +9,9 @@
     "dependencies" : {
         "fort" : "~0.1.0"
     },
+    "bin": {
+        "undirender" : "./bin/undirender.js"
+    },
     "repository" : {
         "type" : "git",
         "url" : "git://github.com/substack/undirender.git"
